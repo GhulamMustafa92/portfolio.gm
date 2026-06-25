@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+body{
+    background-color: #121212;
+      font-family: "Outfit", sans-serif;
+
+}
+/* Parent rotation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+/* Child counter rotation */
+@keyframes spin-child {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-child {
+  animation: spin-child 6s linear infinite;
+}
+/* second */
+@keyframes spin-slow-2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow-2 {
+  animation: spin-slow-2 15s linear infinite;
+}
+
+/* Child counter rotation */
+@keyframes spin-child-2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-child-2 {
+  animation: spin-child-2 15s linear infinite;
+}
+::-webkit-scrollbar{
+    border: #121212
+}
+/* logo */
+@keyframes rotateMove {
+  0% {
+    transform: rotate(360deg) translateX(0px);
+  }
+  20% {
+    transform: rotate(0deg) translateX(0px); 
+  }
+  40% {
+    transform: rotate(0deg) translateX(0px); 
+  }
+  60% {
+    transform: rotate(0deg) translateX(160px); 
+  }
+  80% {
+    transform: rotate(0deg) translateX(0px);
+  }
+  100% {
+    transform: rotate(360deg) translateX(0px); 
+  }
+}
+
+.rotate {
+  animation: rotateMove 10s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
