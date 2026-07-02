@@ -3,6 +3,7 @@ import first from '../assets/first.png'
 import second from '../assets/second.png'
 import third from '../assets/third.png'
 import fourth from '../assets/fourth.png'
+import fifth from '../assets/fifth.jpeg'
 import comming from '../assets/comming.jpg'
 export default function Projects() {
   const projects = [
@@ -21,6 +22,10 @@ export default function Projects() {
     {
       img: fourth,
       link: 'https://rently-car-jade.vercel.app/',
+    },
+    {
+      img: fifth,
+      link: 'https://gromark-store.vercel.app/',
     },
     {
       img: comming,
