@@ -1,161 +1,180 @@
+const experience = [
+  {
+    icon: "💻",
+    role: "Frontend Developer & Team Lead",
+    company: "Gujrat IT & HUB",
+    period: "Jun 2026 - Present",
+    points: [
+      "Led frontend architecture and development using React.js.",
+      "Built reusable UI components and optimized performance.",
+      "Mentored junior developers and conducted code reviews.",
+    ],
+  },
+  {
+    icon: "🚀",
+    role: "Frontend Developer & Team Lead",
+    company: "Gujrat IT & HUB",
+    period: "Jun 2026 - Present",
+    points: [
+      "Led frontend architecture and development using React.js.",
+      "Built reusable UI components and optimized performance.",
+      "Mentored junior developers and conducted code reviews.",
+    ],
+  },
+  {
+    icon: "👨‍💻",
+    role: "Frontend Developer & Team Lead",
+    company: "Gujrat IT & HUB",
+    period: "Jun 2026 - Present",
+    points: [
+      "Led frontend architecture and development using React.js.",
+      "Built reusable UI components and optimized performance.",
+      "Mentored junior developers and conducted code reviews.",
+    ],
+  },
+];
+
+const philosophy = [
+  {
+    title: "React.JS, Node, JavaScript",
+    text: "Architecting type-safe, scalable frontend applications. I leverage React.js Server Actions and SSR for maximum performance and SEO.",
+  },
+  {
+    title: "MERN Stack, MongoDB, Node.js, Convex",
+    text: "Building robust backend architectures. I specialize in both traditional REST APIs (Express/Mongo) and modern serverless backends for flexible full-stack solutions.",
+  },
+  {
+    title: "TanStack Query, Redux Toolkit, Zod",
+    text: "Managing complex server state and enforcing strict data validation. I ensure robust data flow with optimized caching and type integrity.",
+  },
+  {
+    title: "Tailwind CSS, Shadcn UI, Framer Motion",
+    text: "Expertly crafting clean, animated, and accessible UIs. I guarantee pixel-perfect fidelity from complex Figma mockups.",
+  },
+];
+
+const cardBase =
+  "rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_30px_-10px_#2563eb]";
+
 export default function About() {
   return (
-    <div id="work" className="max-w-5xl mx-auto p-5">
-      <h1 className="flex justify-center text-3xl font-bold">
-        <span className="text-white">About My </span>{" "}
-        <span className="text-blue-600 mx-1"> Journey</span>
-      </h1>
-      <h3 className="flex justify-center py-2 mb-4">
-        <span className="w-30 h-1 rounded-full my-2 bg-blue-600 text-center text-white"></span>
-      </h3>
+    <section id="work" className="max-w-6xl mx-auto px-6 py-20">
+      {/* Heading */}
+      <div className="text-center mb-14">
+        <span className="inline-block text-xs font-semibold tracking-[0.25em] uppercase text-cyan-400 border border-cyan-400/30 bg-cyan-400/5 rounded-full px-4 py-1 mb-4">
+          About Me
+        </span>
+        <h1 className="text-3xl md:text-4xl font-bold text-white">
+          About My{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            Journey
+          </span>
+        </h1>
+        <div className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400" />
+      </div>
 
-      <div className="text-white grid grid-cols-1 lg:grid-cols-2 gap-6 justify-center items-start">
-        {/* Left Column */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        {/* Left: Experience */}
         <div>
-          <h1 className="text-2xl flex text-blue-600 font-semibold mb-4">
-            <span className="w-6 mt-2 mr-2 h-6 border-2 border-blue-600 rounded-full"></span>{" "}
+          <h2 className="flex items-center gap-3 text-xl font-semibold text-white mb-8">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 text-base shadow-[0_0_20px_-4px_#06b6d4]">
+              💼
+            </span>
             Work Experience
-          </h1>
+          </h2>
 
-          <div className="grid grid-cols-[5%_95%] relative">
-            {/* Timeline Item 1 */}
-            <span className="absolute w-8 -left-3 mt-7 flex justify-center items-center h-8 border-2 border-blue-600 rounded-full">
-              💻
-            </span>
-            <div className="h-40 w-1 rounded-full bg-blue-600 mt-16"></div>
-            <div className="border border-gray-700 bg-black rounded-lg my-6 p-5 w-full lg:w-[28rem]">
-              <h3 className="font-semibold pb-2">
-                Frontend Developer & Team Lead
-              </h3>
-              <h4 className="text-gray-500 pb-2">Gujrat IT & HUB</h4>
-              <button className="border text-blue-600 rounded-3xl px-3 text-sm">
-                Jun 2026-Present
-              </button>
-              <ul className="text-sm py-2 list-disc list-inside text-gray-400">
-                <li>
-                  Led frontend architecture and development using React.js.
-                </li>
-                <li>Built reusable UI components and optimized performance.</li>
-                <li>Mentored junior developers and conducted code reviews.</li>
-              </ul>
-            </div>
+          <div className="relative ml-4 border-l border-white/10 space-y-8 pl-8">
+            {experience.map((item, i) => (
+              <div key={i} className="relative">
+                {/* Timeline dot */}
+                <span className="absolute -left-[3.15rem] top-4 flex h-10 w-10 items-center justify-center rounded-full border border-blue-500/50 bg-black text-lg shadow-[0_0_18px_-4px_#2563eb]">
+                  {item.icon}
+                </span>
 
-            {/* Timeline Item 2 */}
-            <span className="absolute w-8 -left-3 top-62 mt-7 flex justify-center items-center h-8 border-2 border-blue-600 rounded-full">
-              🚀
-            </span>
-            <div className="h-40 w-1 rounded-full bg-blue-600 mt-16"></div>
-            <div className="border border-gray-700 bg-black rounded-lg my-6 p-5 w-full lg:w-[28rem]">
-              <h3 className="font-semibold pb-2">
-                Frontend Developer & Team Lead
-              </h3>
-              <h4 className="text-gray-500 pb-2">Gujrat IT & HUB</h4>
-              <button className="border text-blue-600 rounded-3xl px-3 text-sm">
-                Jun 2026-Present
-              </button>
-              <ul className="text-sm py-2 list-disc list-inside text-gray-500">
-                <li>
-                  Led frontend architecture and development using React.js.
-                </li>
-                <li>Built reusable UI components and optimized performance.</li>
-                <li>Mentored junior developers and conducted code reviews.</li>
-              </ul>
-            </div>
+                <div className={`${cardBase} p-6`}>
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <h3 className="font-semibold text-white">{item.role}</h3>
+                      <h4 className="text-sm text-gray-400 mt-1">{item.company}</h4>
+                    </div>
+                    <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
+                      {item.period}
+                    </span>
+                  </div>
 
-            {/* Timeline Item 3 */}
-            <span className="absolute w-8 -left-3 top-125 mt-7 flex justify-center items-center h-8 border-2 border-blue-600 rounded-full">
-              👨‍💻
-            </span>
-            <div className="h-40 w-1 rounded-full bg-blue-600 mt-16"></div>
-            <div className="border border-gray-700 bg-black rounded-lg my-6 p-5 w-full lg:w-[28rem]">
-              <h3 className="font-semibold pb-2">
-                Frontend Developer & Team Lead
-              </h3>
-              <h4 className="text-gray-500 pb-2">Gujrat IT & HUB</h4>
-              <button className="border text-blue-600 rounded-3xl px-3 text-sm">
-                Jun 2026-Present
-              </button>
-              <ul className="text-sm py-2 list-disc list-inside text-gray-400">
-                <li>
-                  Led frontend architecture and development using React.js.
-                </li>
-                <li>Built reusable UI components and optimized performance.</li>
-                <li>Mentored junior developers and conducted code reviews.</li>
-              </ul>
-            </div>
+                  <ul className="mt-4 space-y-2 text-sm text-gray-400">
+                    {item.points.map((p, j) => (
+                      <li key={j} className="flex gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Right Column */}
+        {/* Right: Philosophy */}
         <div>
-          <h1 className="text-2xl flex  text-blue-600 font-semibold mb-4">
+          <h2 className="flex items-center gap-3 text-xl font-semibold text-white mb-8">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 text-base shadow-[0_0_20px_-4px_#06b6d4]">
+              🎯
+            </span>
             My Development Philosophy
-          </h1>
-          <div className="border border-gray-700 text-gray-500  bg-black rounded-lg mt-10 mb-6 p-5 w-full lg:w-[28rem]">
-            <ul className="list-disc list-inside space-y-2">
-              <li>
-                <span className="text-blue-600">
-                  React.JS, Node, JavaScript
+          </h2>
+
+          <div className="space-y-4">
+            {philosophy.map((item, i) => (
+              <div key={i} className={`${cardBase} p-5 flex gap-4`}>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-sm font-bold text-blue-400 border border-blue-500/20">
+                  0{i + 1}
                 </span>
-                : Architecting type-safe, scalable frontend applications. I
-                leverage React.js Server Actions and SSR for maximum performance
-                and SEO.
-              </li>
-              <li>
-                <span className="text-blue-600">
-                  MERN Stack, MongoDB, Node.js, Convex
-                </span>
-                : Building robust backend architectures. I specialize in both
-                traditional REST APIs (Express/Mongo) and modern serverless
-                backends for flexible full-stack solutions.
-              </li>
-              <li>
-                <span className="text-blue-600">
-                  TanStack Query, Redux Toolkit, Zod
-                </span>
-                : Managing complex server state and enforcing strict data
-                validation. I ensure robust data flow with optimized caching and
-                type integrity.
-              </li>
-              <li>
-                <span className="text-blue-600">
-                  Tailwind CSS, Shadcn UI, Framer Motion
-                </span>
-                : Expertly crafting clean, animated, and accessible UIs. I
-                guarantee pixel-perfect fidelity from complex Figma mockups.{" "}
-              </li>
-            </ul>
+                <div>
+                  <h3 className="text-sm font-semibold text-blue-400">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-400">{item.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border border-gray-700 text-gray-300 bg-black rounded-lg my-6 p-5 md:w-113">
-            <div className="border border-gray-700 rounded-lg p-5 flex flex-col justify-center">
-              <h2 className="text-xl mb-2">🧠</h2>
-              <h1 className="text-sm font-normal text-blue-600 mb-2">
-                Analytical Problem Solving
-              </h1>
-              <p className="text-gray-400 text-[12px] leading-relaxed">
-                I enjoy breaking down complex problems into manageable
-                solutions.
+          {/* Highlights */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className={`${cardBase} p-5`}>
+              <div className="text-2xl mb-3">🧠</div>
+              <h3 className="text-sm font-semibold text-white mb-1">Analytical Problem Solving</h3>
+              <p className="text-xs leading-relaxed text-gray-400">
+                I enjoy breaking down complex problems into manageable solutions.
               </p>
             </div>
-
-            <div className="border border-gray-700 rounded-lg p-5 flex flex-col justify-center">
-              <h2 className="text-3xl mb-3">📚</h2>
-              <h1 className="text-sm font-normal text-blue-600 mb-2">
-                Lifelong Learning
-              </h1>
-              <p className="text-gray-400 text-[12px] leading-relaxed">
+            <div className={`${cardBase} p-5`}>
+              <div className="text-2xl mb-3">📚</div>
+              <h3 className="text-sm font-semibold text-white mb-1">Lifelong Learning</h3>
+              <p className="text-xs leading-relaxed text-gray-400">
                 Committed to staying updated with the latest web technologies.
               </p>
             </div>
           </div>
-          <div className="">
-            <h1 className="text-[10px] mx-1 -mt-2 my-1 text-blue-600">Upcoming Learning Goals</h1>
-            <button className="text-[10px] border text-blue-600 border-gray-700 rounded-2xl px-3 py-1 ">AI Automation</button>
-            <button className="text-[10px] border text-blue-600 border-gray-700 rounded-2xl px-3 py-1 mx-2">Machine Learning</button>
+
+          {/* Learning goals */}
+          <div className="mt-6">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">
+              Upcoming Learning Goals
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {["AI Automation", "Machine Learning"].map((goal) => (
+                <span
+                  key={goal}
+                  className="rounded-full border border-cyan-400/30 bg-cyan-400/5 px-4 py-1.5 text-xs font-medium text-cyan-300 transition-colors hover:bg-cyan-400/10"
+                >
+                  {goal}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
