@@ -39,35 +39,17 @@ export default function Navbar() {
     <nav className={`w-full fixed top-0 left-0 pt-4 px-4 z-[1000] transition-all duration-300 ${scrolled ? "pt-2" : "pt-4"}`}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-black/80 backdrop-blur-2xl border border-blue-500/20 shadow-[0_10px_30px_-10px_rgba(20,71,230,0.3)] rounded-full transition-all duration-300">
         <div className="flex justify-between items-center h-16">
-          
+
           {/* Logo / TechText Section */}
-          <div className="flex items-center cursor-pointer  group h-10 w-40 overflow-hidden" onClick={() => scrollToSection("home")}>
-<TechText
-  text="PortFolio"
-  fontWeight={700}
-  fontSize={150}
-  reveal="letter"
-  dashLength={4}
-  dashGap={2}
-  specks={6}
-  intro="metrics"
-  introDuration={2.8}
-  clickKick
-  letterSpacing={-0.03}
-  accentColor="#ffffff"
-  reach={200}
-  softness={0.7}
-  lineStyle="solid"
-  strokeWidth={1.25}
-  speed={1}
-  bounce={0.75}
-  selection
-  color="#3317ea"
-  align="center"
-  draggable
-  sweep
-/>        
-      </div>
+          <div
+            className="flex items-center cursor-pointer group h-10 w-40 overflow-hidden"
+            onClick={() => scrollToSection("home")}
+          >
+            <span className="text-xl font-black tracking-widest text-white transition-all duration-300 group-hover:text-blue-400">
+              NAVBAR<span className="text-blue-500">.</span>
+            </span>
+          </div>
+
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-1 p-1.5 rounded-full bg-gradient-to-r from-blue-600/20 via-blue-500/10 to-cyan-500/20 border border-white/10 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_0_24px_-10px_#06b6d4]">
             <li className={itemClass("home")} onClick={() => scrollToSection("home")}>
