@@ -8,23 +8,15 @@ import node from "../SVG/node.svg";
 import git from "../SVG/git.svg";
 import tailwind from '../SVG/tailwind.svg'
 import my from "../assets/my.png";
+import bgmusic from "../assets/bgmusic.aac";
 import Typed from 'typed.js';
 import { useEffect, useRef, useState } from "react";
-import ShapeGrid from './ShapeGrid';
+import { RiPlayLargeFill, RiPauseLargeFill } from "react-icons/ri";
 
 export default function Home() {
   const typedRef = useRef(null);
-
-  const [isDesktop, setIsDesktop] = useState(
-    typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const onChange = (e) => setIsDesktop(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
@@ -39,41 +31,57 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.4;
+
+    const startOnClick = () => {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    };
+
+    // pehle autoplay try, block ho to pehle click pe start
+    audio.play().then(() => setPlaying(true)).catch(() => {
+      window.addEventListener("click", startOnClick, { once: true });
+    });
+
+    return () => {
+      window.removeEventListener("click", startOnClick);
+      audio.pause();
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    } else {
+      audio.pause();
+      setPlaying(false);
+    }
+  };
+
   return (
     <div
       className="relative w-full overflow-hidden isolate flow-root min-h-screen"
       style={{ backgroundColor: '#000000' }}
     >
-      {/* Background: Desktop = ShapeGrid, Mobile = blue gradient */}
-      {isDesktop ? (
-        <div className="absolute inset-0 z-0">
-          <ShapeGrid
-            shape="hexagon"
-            direction="none"
-            lineColor="#2a2734"
-            hoverColor="#2d5ad4"
-            hoverFillColor="#2dd4bf"
-            fillOpacity={0.15}
-            cellSize={40}
-            speed={0.35}
-            tiltX={0}
-            tiltY={0}
-            rainbow={false}
-            lineWidth={1}
-            radius={2}
-            trail={0.9}
-            glow={0.35}
-            twinkle={0}
-            fade={1}
-            clickCascade
-            intro
-          />
-        </div>
-      ) : (
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,#1e3a8a_0%,#0b1437_40%,#000000_75%)]">
-          <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-600/25 blur-3xl" />
-        </div>
-      )}
+      {/* Background Music */}
+      <audio ref={audioRef} src={bgmusic} loop />
+
+      <button
+        onClick={toggleMusic}
+        aria-label={playing ? "Music off" : "Music on"}
+        className="fixed right-4 bottom-4 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-800 hover:from-blue-400 hover:to-blue-700 text-white text-xl border border-blue-400/40 shadow-[0_0_25px_#1447e6] transition-all duration-300 hover:scale-110 cursor-pointer"
+      >
+        {playing ? <RiPauseLargeFill /> : <RiPlayLargeFill />}
+      </button>
+
+      {/* Background: Blue gradient (desktop + mobile) */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,#1e3a8a_0%,#0b1437_40%,#000000_75%)]">
+        <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-600/25 blur-3xl" />
+      </div>
 
       {/* Original Home (unchanged) */}
       <div className="relative z-10">

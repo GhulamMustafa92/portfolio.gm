@@ -32,13 +32,13 @@ export default function Preloader() {
       tl.fromTo(
         ".p-letter",
         { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
       )
         .fromTo(
           ".p-dot",
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.3"
+          "-=0.3",
         )
         // 2) HELLO, I'M: letter by letter neeche se upar + typing sound
         .call(startTyping, null, "+=0.05")
@@ -52,40 +52,47 @@ export default function Preloader() {
             stagger: 0.1,
             ease: "power2.out",
           },
-          "<"
+          "<",
         )
-        // Name: typing text (ek ek letter) + sound khatam hone par band
+        // Name: letter by letter neeche se upar, sound chalta rehta hai
         .fromTo(
           ".n-letter",
-          { opacity: 0 },
+          { yPercent: 110, opacity: 0 },
           {
+            yPercent: 0,
             opacity: 1,
-            duration: 0.01,
+            duration: 0.35,
             stagger: 0.05,
-            ease: "none",
-            onComplete: stopTyping,
+            ease: "power2.out",
           },
-          "-=0.2"
+          "-=0.2",
         )
         // 3) Image
         .fromTo(
           ".p-img",
           { opacity: 0, scale: 0.6 },
           { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" },
-          "-=0.1"
+          "-=0.1",
         )
-        // 4) Right text
+        // 4) Right text: letter by letter neeche se upar + sound khatam hone par band
         .fromTo(
-          ".p-right",
-          { opacity: 0, x: 80 },
-          { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.2"
+          ".r-letter",
+          { yPercent: 110, opacity: 0 },
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.35,
+            stagger: 0.05,
+            ease: "power2.out",
+            onComplete: stopTyping,
+          },
+          "-=0.2",
         )
         // 5) Exit animation: content upar uth kar fade, phir screen upar slide
         .to(
           ".p-content",
           { y: -60, opacity: 0, duration: 0.5, ease: "power2.in" },
-          "+=0.4"
+          "+=0.4",
         )
         .to(root.current, {
           yPercent: -100,
@@ -93,11 +100,13 @@ export default function Preloader() {
           ease: "power4.inOut",
         });
 
+      tl.duration(10); // poori animation (exit samet) exactly 10 sec
+
       // Progress bar
       gsap.fromTo(
         ".p-progress",
         { width: "0%" },
-        { width: "100%", duration: 5, ease: "none" }
+        { width: "100%", duration: 10, ease: "none" },
       );
     }, root);
 
@@ -121,7 +130,7 @@ export default function Preloader() {
               {ch}
             </span>
           ))}
-          <span className="p-dot inline-block text-white opacity-0">.</span>
+          {/* <span className="p-dot inline-block text-white opacity-0">.</span> */}
         </h1>
 
         <div className="relative z-[2] flex flex-col items-center justify-center gap-4 md:flex-row md:gap-12">
@@ -130,7 +139,7 @@ export default function Preloader() {
               {["HELLO,", "I'M"].map((word, wi) => (
                 <span
                   key={wi}
-                  className={`inline-block whitespace-nowrap ${wi === 0 ? "mr-[0.3em]" : ""}`}
+                  className={`inline-block whitespace-nowrap ${wi === 0 ? "mr-[0.3em]" : "ml-42"}`}
                 >
                   {word.split("").map((ch, i) => (
                     <span
@@ -145,15 +154,21 @@ export default function Preloader() {
                 </span>
               ))}
             </p>
-            <h2 className="mt-1 text-[clamp(4.1rem,5.2vw,4.8rem)] font-bold">
+            <h2 className="mt-36 leading-none text-[clamp(4.1rem,5vw,4.8rem)] font-bold">
+              {" "}
               {["Ghulam", "Mustafa!"].map((word, wi) => (
                 <span
                   key={wi}
-                  className={`inline-block  whitespace-nowrap ${wi === 0 ? "mr-[0.3em]" : ""}`}
+                  className={`inline-block  whitespace-nowrap ${wi === 0 ? "mr-[0.3em]" : "ml-10"}`}
                 >
                   {word.split("").map((ch, i) => (
-                    <span key={i} className="n-letter inline-block opacity-0">
-                      {ch}
+                    <span
+                      key={i}
+                      className="inline-block overflow-hidden align-bottom"
+                    >
+                      <span className="n-letter inline-block opacity-0">
+                        {ch}
+                      </span>
                     </span>
                   ))}
                 </span>
@@ -167,12 +182,44 @@ export default function Preloader() {
             className="p-img h-[clamp(460px,48vw,520px)] w-[clamp(460px,48vw,520px)] opacity-0"
           />
 
-          <div className="p-right max-w-[240px] text-center opacity-0 md:text-left">
-            <p className="text-xs tracking-[0.25em] text-blue-500">
-              FRONTEND DEVELOPER
+          <div className="p-right max-w-[240px] text-center md:text-left">
+            <p className="text-7xl mt-15 tracking-[0.25em] text-blue-500">
+              {"MERN STACK".split(" ").map((word, wi) => (
+                <span
+                  key={wi}
+                  className={`inline-block whitespace-nowrap ${wi === 0 ? "mr-[0.3em]" : "ml-10"}`}
+                >
+                  {word.split("").map((ch, i) => (
+                    <span
+                      key={i}
+                      className="inline-block overflow-hidden align-bottom"
+                    >
+                      <span className="r-letter inline-block opacity-0">
+                        {ch}
+                      </span>
+                    </span>
+                  ))}
+                </span>
+              ))}
             </p>
-            <h2 className="mt-1 text-[clamp(1.1rem,2.2vw,1.8rem)] font-bold">
-              React • Tailwind • MERN
+            <h2 className="mt-30 text-[clamp(2.4rem,3.3vw,2.3rem)] font-bold">
+              {["React", "•", "Express", "•", "MONGODB","•"].map((word, wi) => (
+                <span
+                  key={wi}
+                  className={`inline-block whitespace-nowrap ${wi < 4 ? "mr-[0.3em]" : ""}`}
+                >
+                  {word.split("").map((ch, i) => (
+                    <span
+                      key={i}
+                      className="inline-block overflow-hidden align-bottom"
+                    >
+                      <span className="r-letter inline-block opacity-0">
+                        {ch}
+                      </span>
+                    </span>
+                  ))}
+                </span>
+              ))}
             </h2>
           </div>
         </div>
