@@ -77,7 +77,7 @@ export default function Home() {
 
   return (
     <div
-      className="relative w-full overflow-hidden isolate flow-root min-h-screen"
+      className="relative w-full overflow-hidden isolate flow-root"
       style={{ backgroundColor: "#000000" }}
     >
       {/* Background Music */}
