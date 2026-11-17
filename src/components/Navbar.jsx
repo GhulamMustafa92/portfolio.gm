@@ -46,7 +46,7 @@ export default function Navbar() {
             onClick={() => scrollToSection("home")}
           >
             <span className="text-xl font-black tracking-widest text-white transition-all duration-300 group-hover:text-blue-400">
-              NAVBAR<span className="text-blue-500">.</span>
+              PORTFOLIO<span className="text-blue-500">.</span>
             </span>
           </div>
 
